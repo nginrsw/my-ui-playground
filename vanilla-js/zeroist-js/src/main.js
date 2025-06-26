@@ -1,24 +1,28 @@
-import './style.css'
-import viteLogo from '/vite.svg'
-import javascriptLogo from '/javascript.svg'
-import { setupCounter } from './counter.js'
+// src/main.js
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="Javascript logo" />
-    </a>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <h1>Hello VanillaJS!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the VanillaJS logo to learn more
-    </p>
-  </div>
+const app = document.getElementById("app")
+
+app.innerHTML = `
+  <h1>Konter</h1>
+  <button id="decrease">-</button>
+  <span id="count">0</span>
+  <button id="increase">+</button>
 `
 
-setupCounter(document.querySelector('#counter'))
+let count = 0
+const countDisplay = document.getElementById("count")
+const incBtn = document.getElementById("increase")
+const decBtn = document.getElementById("decrease")
+
+incBtn.addEventListener("click", () => {
+  count++
+  countDisplay.textContent = count
+})
+
+decBtn.addEventListener("click", () => {
+  // ini maksudnya jika count lebih besar dari 0, maka si count bisa ngurangin
+  if (count > 0){
+    count--
+    countDisplay.textContent = count
+  }
+})
